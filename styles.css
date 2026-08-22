@@ -785,6 +785,11 @@ body.legal-page {
 /* ─── Mobile navigation and responsive refinements ───────────────────────── */
 
 @media (max-width: 1023px) {
+    header {
+        position: relative;
+        z-index: 1030;
+    }
+
     .mobile-menu-toggle {
         position: fixed;
         top: max(1rem, env(safe-area-inset-top));
