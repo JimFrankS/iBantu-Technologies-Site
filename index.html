@@ -12,7 +12,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/png" href="/public/logo.png" />
     <link rel="preload" href="/public/logo.png" as="image">
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=5" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
@@ -28,13 +28,21 @@
     <div id="corner-logo">
         <img src="/public/logo.png" alt="iBantu logo" />
     </div>
+    <button class="mobile-menu-toggle" type="button" data-mobile-menu-toggle aria-controls="primary-navigation" aria-expanded="false" aria-label="Open navigation menu">
+        <i class="fa-solid fa-bars" data-menu-open-icon aria-hidden="true"></i>
+        <i class="fa-solid fa-xmark" data-menu-close-icon aria-hidden="true" hidden></i>
+    </button>
     <header>
         <a href="/">
             <h1>iBantu Technologies</h1>
         </a>
        <h4>Software Development | Industrial Automation | Internet of Things </h4>
         <p>Helping individuals, communities & businesses by building technologies that provide solutions to their day to day challenges.</p>
-        <nav>
+        <nav id="primary-navigation" class="site-navigation" aria-label="Primary navigation" aria-hidden="true">
+            <button class="mobile-menu-close" type="button" data-mobile-menu-close aria-label="Close navigation menu">
+                <span>Close menu</span>
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
             <a class="anchor-text" href="#about">
                 <p>About</p>
             </a>
@@ -48,6 +56,7 @@
                 <p>Contact</p>
             </a>
         </nav>
+        <button class="mobile-navigation-backdrop" type="button" data-mobile-menu-backdrop aria-label="Close navigation menu" tabindex="-1"></button>
         <div class="social-link-container">
             <a class="social-link" href="tel:+263719729537" aria-label="Call +263 71 972 9537">
                 <i class="fa-solid fa-phone"></i>
@@ -273,17 +282,15 @@
         </section>
     </main>
     <div id="site-footer"></div>
-    <script src="shared.js?v=2"></script>
+    <script src="shared.js?v=4"></script>
     <script>
         const splash = document.getElementById('logo-splash');
         window.addEventListener('DOMContentLoaded', () => {
+            if (!splash) return;
+            splash.classList.add('fade-out');
             window.setTimeout(() => {
-                if (!splash) return;
-                splash.classList.add('fade-out');
-                window.setTimeout(() => {
-                    splash.style.display = 'none';
-                }, 650);
-            }, 2200);
+                splash.style.display = 'none';
+            }, 400);
         });
     </script>
 </body>
